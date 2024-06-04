@@ -1,0 +1,20 @@
+html {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $text;
+}
+
+body {
+  background-color: $white;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.page {
+  padding: 20px;
+}

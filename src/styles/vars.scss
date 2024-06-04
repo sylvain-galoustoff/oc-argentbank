@@ -1,0 +1,9 @@
+$white: #fff;
+$black: #222;
+$green: #00bc77;
+$text: #2c3e50;
+$bgdark: #12002b;
+
+@mixin dev($color: red, $width: 1px) {
+  border: $width solid $color;
+}

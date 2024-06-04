@@ -1,0 +1,26 @@
+@import "../../../styles/vars.scss";
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px;
+}
+
+#logo {
+  width: 200px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+#nav {
+  font-weight: bold;
+
+  a {
+    color: $text;
+    text-decoration: none;
+  }
+}
