@@ -5,6 +5,7 @@ import { logUser } from "../../services/api";
 import { useDispatch } from "react-redux";
 import { updateToast } from "../../store/toastReducer";
 import { useNavigate } from "react-router-dom";
+import { updateToken } from "../../store/userReducer";
 
 function SignIn() {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function SignIn() {
     email: "",
     password: "",
   });
+  const [remember, setRemember] = useState(false);
 
   const handleInput = (e, field) => {
     setForm((prevState) => ({
@@ -45,7 +47,10 @@ function SignIn() {
     }
 
     if (response.status === 200) {
-      localStorage.setItem("token", response.body.token);
+      dispatch(updateToken(response.body.token));
+      if (remember) {
+        localStorage.setItem("token", response.body.token);
+      }
       navigate("/user");
     }
   };
@@ -65,7 +70,7 @@ function SignIn() {
             <input type="password" id="password" value={form.password} onChange={(e) => handleInput(e, "password")} />
           </div>
           <div className="input-remember">
-            <input type="checkbox" id="remember-me" />
+            <input type="checkbox" id="remember-me" checked={remember} onChange={() => setRemember(!remember)} />
             <label htmlFor="remember-me">Remember me</label>
           </div>
           <button className={style.signInButton}>Sign In</button>

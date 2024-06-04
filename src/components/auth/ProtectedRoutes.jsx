@@ -1,14 +1,16 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 
 function ProtectedRoutes() {
   const navigate = useNavigate();
+  const token = useSelector((state) => state.user.token);
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
+    if (!token) {
       navigate("/signin");
     }
-  }, [navigate]);
+  }, [navigate, token]);
 
   return <Outlet />;
 }
