@@ -29,3 +29,19 @@
     }
   }
 }
+
+.userNav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#logOutButton {
+  background-color: transparent;
+  color: $text;
+  font-size: 1rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
