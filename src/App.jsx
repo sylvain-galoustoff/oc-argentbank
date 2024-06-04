@@ -19,7 +19,7 @@ function App() {
       dispatch(updateToken(localStorage.getItem("token")));
       navigate("/user");
     }
-  });
+  }, [dispatch, navigate]);
 
   return (
     <div id="app">

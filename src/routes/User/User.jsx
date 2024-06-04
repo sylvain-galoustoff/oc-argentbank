@@ -1,13 +1,28 @@
+import { useEffect, useState } from "react";
 import style from "./User.module.scss";
+import { useSelector } from "react-redux";
+import { getUser } from "../../services/api";
 
 function User() {
+  const token = useSelector((state) => state.user.token);
+  const [userData, setUserData] = useState();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await getUser(token);
+      setUserData(user);
+    };
+
+    fetchUser();
+  }, [token]);
+
   return (
     <div className="page" id={style.user}>
       <div className={style.header}>
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {userData && `${userData.firstName} ${userData.lastName}`}
         </h1>
         <button className={style.editButton}>Edit Name</button>
       </div>

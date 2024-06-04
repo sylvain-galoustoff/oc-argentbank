@@ -23,3 +23,25 @@ export const logUser = async (options) => {
     return error;
   }
 };
+
+export const getUser = async (token) => {
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    };
+    const response = await fetch(apiUrl + "user/profile", options);
+
+    if (!response.ok) {
+      throw new Error("Erreur de requête POST");
+    }
+
+    const data = await response.json();
+    return data.body;
+  } catch (error) {
+    console.error(error);
+  }
+};
