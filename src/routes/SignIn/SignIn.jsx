@@ -1,10 +1,16 @@
 import { useState } from "react";
 import style from "./SignIn.module.scss";
 import { FaCircleUser } from "react-icons/fa6";
+import { logUser } from "../../services/api";
+import { useDispatch } from "react-redux";
+import { updateToast } from "../../store/toastReducer";
+import { useNavigate } from "react-router-dom";
 
 function SignIn() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [form, setForm] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -15,16 +21,44 @@ function SignIn() {
     }));
   };
 
+  const submitForm = async (e) => {
+    e.preventDefault();
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    };
+
+    const response = await logUser(options);
+    console.log(response);
+    if (response.status === 400) {
+      dispatch(
+        updateToast({
+          show: true,
+          type: "warning",
+          message: response.message,
+        })
+      );
+    }
+
+    if (response.status === 200) {
+      localStorage.setItem("token", response.body.token);
+      navigate("/user");
+    }
+  };
+
   return (
     <div className="page" id={style.signIn}>
       <section className={style.signInContent}>
         <FaCircleUser />
         <h1>Sign In</h1>
-        <form>
+        <form onSubmit={submitForm}>
           <div className="input-wrapper">
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" value={form.username} onChange={(e) => handleInput(e, "username")} />
-            <p className="validator">Invalid mail format</p>
+            <input type="text" id="username" value={form.username} onChange={(e) => handleInput(e, "email")} />
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>

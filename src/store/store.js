@@ -1,8 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userReducer";
+import toastReducer from "./toastReducer";
+
+const rootReducer = combineReducers({
+  user: userReducer,
+  toast: toastReducer,
+});
 
 const store = configureStore({
-  reducer: userReducer,
+  reducer: rootReducer,
 });
 
 export default store;

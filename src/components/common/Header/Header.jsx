@@ -3,11 +3,10 @@ import { useSelector } from "react-redux";
 import { FaCircleUser } from "react-icons/fa6";
 import logo from "../../../assets/argentBankLogo.png";
 import style from "./Header.module.scss";
+import Toast from "../Toast/Toast";
 
 function Header() {
-  const user = useSelector((state) => state.user);
-
-  console.log(user);
+  const toast = useSelector((state) => state.toast);
 
   return (
     <header id={style.header}>
@@ -18,15 +17,14 @@ function Header() {
       </div>
       <nav id={style.nav}>
         <ul>
-          {!user && (
-            <li>
-              <Link to="/signin">
-                <FaCircleUser /> Sign In
-              </Link>
-            </li>
-          )}
+          <li>
+            <Link to="/signin">
+              <FaCircleUser /> Sign In
+            </Link>
+          </li>
         </ul>
       </nav>
+      {toast.show === true && <Toast />}
     </header>
   );
 }

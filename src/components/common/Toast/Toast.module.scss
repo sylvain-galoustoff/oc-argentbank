@@ -1,0 +1,37 @@
+@import "../../../styles/vars.scss";
+
+.toast {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  // transform: translateY(-100%);
+  animation: toast 5s ease-in;
+  background-color: $white;
+}
+
+@keyframes toast {
+  from {
+    transform: translateY(-100%);
+  }
+
+  5% {
+    transform: translateY(0);
+  }
+
+  95% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}

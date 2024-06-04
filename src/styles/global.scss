@@ -58,21 +58,6 @@ a {
   }
 }
 
-.validator {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: translateY(100%);
-  color: red;
-  font-size: .8rem;
-  opacity: 0;
-  @include trans;
-
-  &.show {
-    opacity: 1;
-  }
-}
-
 /* BUTTONS */
 button,
 a.button {
@@ -86,4 +71,17 @@ a.button {
   font-weight: bold;
   color: $white;
   cursor: pointer;
+}
+
+/* SYSTEM */
+div.danger {
+  background-color: $danger;
+}
+
+div.warning {
+  background-color: $warning;
+}
+
+div.success {
+  background-color: $success;
 }

@@ -4,6 +4,10 @@ $green: #00bc77;
 $text: #2c3e50;
 $bgdark: #12002b;
 
+$danger: #c62a2a;
+$warning: #d3c335;
+$success: #55c42a;
+
 @mixin dev($color: red, $width: 1px) {
   border: $width solid $color;
 }
