@@ -7,3 +7,7 @@ $bgdark: #12002b;
 @mixin dev($color: red, $width: 1px) {
   border: $width solid $color;
 }
+
+@mixin trans($time: .25s) {
+  transition: all $time ease-in;
+}

@@ -4,6 +4,7 @@ import NotFound from "./routes/NotFound/NotFound";
 import Home from "./routes/Home/Home";
 import SignIn from "./routes/SignIn/SignIn";
 import User from "./routes/User/User";
+import Footer from "./components/common/Footer/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/user" element={<User />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

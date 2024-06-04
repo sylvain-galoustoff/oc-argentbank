@@ -1,0 +1,61 @@
+@import "../../styles/vars.scss";
+
+#hero {
+  background-image: url(../../assets/bank-tree.jpeg);
+  background-size: cover;
+  background-position: 0% 33%;
+  height: 400px;
+  position: relative;
+}
+
+.heroContent {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 300px;
+  margin: 2rem;
+  background-color: $white;
+  padding: 2rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.text {
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+.features {
+  display: flex;
+  justify-content: space-between;
+}
+
+.featureItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem;
+  flex: 1;
+
+  p {
+    text-align: center;
+  }
+}
+
+.featureIcon {
+  width: 100px;
+  border: 10px solid #00bc77;
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+.featureItemTitle {
+  color: #222;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 2rem 0 0.5rem;
+}

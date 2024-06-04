@@ -18,13 +18,13 @@ function Header() {
       </div>
       <nav id={style.nav}>
         <ul>
-          <li>
-            {!user && (
+          {!user && (
+            <li>
               <Link to="/signin">
                 <FaCircleUser /> Sign In
               </Link>
-            )}
-          </li>
+            </li>
+          )}
         </ul>
       </nav>
     </header>
