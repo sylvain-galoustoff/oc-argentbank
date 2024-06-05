@@ -37,7 +37,7 @@ function Header() {
             <div className={style.userNav}>
               <li>
                 <Link to="/user">
-                  <FaCircleUser /> Tony
+                  <FaCircleUser /> {user.firstName}
                 </Link>
               </li>
               <li>

@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import style from "./User.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../services/api";
+import { updateUser } from "../../store/userReducer";
 
 function User() {
+  const dispatch = useDispatch();
   const token = useSelector((state) => state.user.token);
-  const [userData, setUserData] = useState();
+  const userData = useSelector((state) => state.user);
 
   useEffect(() => {
     const fetchUser = async () => {
       const user = await getUser(token);
-      setUserData(user);
+      dispatch(updateUser(user));
     };
 
     fetchUser();
-  }, [token]);
+  }, [token, dispatch]);
 
   return (
     <div className="page" id={style.user}>
