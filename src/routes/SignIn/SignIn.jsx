@@ -48,9 +48,13 @@ function SignIn() {
 
     if (response.status === 200) {
       dispatch(updateToken(response.body.token));
-      if (remember) {
-        localStorage.setItem("token", response.body.token);
-      }
+      dispatch(
+        updateToast({
+          show: true,
+          type: "success",
+          message: "Login succeed, welcome !",
+        })
+      );
       navigate("/user");
     }
   };

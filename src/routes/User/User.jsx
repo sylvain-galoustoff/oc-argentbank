@@ -3,6 +3,7 @@ import style from "./User.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../services/api";
 import { updateUser } from "../../store/userReducer";
+import { Link } from "react-router-dom";
 
 function User() {
   const dispatch = useDispatch();
@@ -26,7 +27,9 @@ function User() {
           <br />
           {userData && `${userData.firstName} ${userData.lastName}`}
         </h1>
-        <button className={style.editButton}>Edit Name</button>
+        <Link to="/user/edit" className={`button ${style.editButton}`}>
+          Edit name
+        </Link>
       </div>
 
       <section className={style.account}>

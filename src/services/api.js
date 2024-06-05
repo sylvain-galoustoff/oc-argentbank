@@ -25,13 +25,38 @@ export const logUser = async (options) => {
 };
 
 export const getUser = async (token) => {
+  if (token) {
+    try {
+      const options = {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await fetch(apiUrl + "user/profile", options);
+
+      if (!response.ok) {
+        throw new Error("Erreur de requête POST");
+      }
+
+      const data = await response.json();
+      return data.body;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+};
+
+export const updateUserProfile = async (token, body) => {
   try {
     const options = {
-      method: "POST",
+      method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
+      body: JSON.stringify(body),
     };
     const response = await fetch(apiUrl + "user/profile", options);
 
@@ -40,8 +65,10 @@ export const getUser = async (token) => {
     }
 
     const data = await response.json();
-    return data.body;
+    return data;
   } catch (error) {
-    console.error(error);
+    return {
+      status: 500,
+    };
   }
 };
