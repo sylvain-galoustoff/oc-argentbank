@@ -15,6 +15,7 @@ function SignIn() {
     password: "",
   });
   const [remember, setRemember] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInput = (e, field) => {
     setForm((prevState) => ({
@@ -25,6 +26,7 @@ function SignIn() {
 
   const submitForm = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const options = {
       method: "POST",
@@ -35,7 +37,6 @@ function SignIn() {
     };
 
     const response = await logUser(options);
-    console.log(response);
     if (response.status === 400) {
       dispatch(
         updateToast({
@@ -44,6 +45,16 @@ function SignIn() {
           message: response.message,
         })
       );
+      setIsLoading(false);
+    } else if (response.status === "network_error") {
+      dispatch(
+        updateToast({
+          show: true,
+          type: "danger",
+          message: response.message,
+        })
+      );
+      setIsLoading(false);
     }
 
     if (response.status === 200) {
@@ -55,6 +66,7 @@ function SignIn() {
           message: "Login succeed, welcome !",
         })
       );
+      setIsLoading(false);
       navigate("/user");
     }
   };
@@ -77,7 +89,7 @@ function SignIn() {
             <input type="checkbox" id="remember-me" checked={remember} onChange={() => setRemember(!remember)} />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <button className={style.signInButton}>Sign In</button>
+          <button className={style.signInButton}>{isLoading ? "Connecting..." : "Sign In"}</button>
         </form>
       </section>
     </div>

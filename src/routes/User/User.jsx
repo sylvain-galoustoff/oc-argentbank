@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../services/api";
 import { updateUser } from "../../store/userReducer";
 import { Link } from "react-router-dom";
+import Account from "./Account/Account";
 
 function User() {
   const dispatch = useDispatch();
@@ -32,14 +33,9 @@ function User() {
         </Link>
       </div>
 
-      <section className={style.account}>
-        <div className="account-content-wrapper">
-          <h3 className={style.accountTitle}>Argent Bank Checking (x8349)</h3>
-          <p className={style.accountAmount}>$2,082.79</p>
-          <p className="account-amount-description">Available Balance</p>
-        </div>
-        <button className="transaction-button">View transactions</button>
-      </section>
+      <Account title="Argent Bank Checking (x8349)" amount="2,082.79" description="Available Balance" />
+      <Account title="Argent Bank Savings (x6712)" amount="10,928.42" description="Available Balance" />
+      <Account title="Argent Bank Credit Card (x8349)" amount="184.30" description="Current Balance" />
     </div>
   );
 }

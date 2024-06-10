@@ -12,7 +12,6 @@ export const logUser = async (options) => {
         };
         return badRequest;
       } else {
-        console.error(response);
         throw new Error("Erreur de requête POST");
       }
     }
@@ -20,7 +19,17 @@ export const logUser = async (options) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    return error;
+    if (error instanceof TypeError && error.message === "Failed to fetch") {
+      return {
+        status: "network_error",
+        message: "Cannot reach the server. Please try again later.",
+      };
+    } else {
+      return {
+        status: "unknown_error",
+        message: "An unexpected error occurred. Please try again later.",
+      };
+    }
   }
 };
 
