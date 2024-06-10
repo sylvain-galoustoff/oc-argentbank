@@ -1,0 +1,21 @@
+@import "../../../styles/vars.scss";
+
+#form {
+  margin-top: 1rem;
+}
+
+.center {
+  justify-content: center;
+}
+
+.signInButton {
+  width: 150px;
+}
+
+#cancelButton {
+  background-color: $white;
+  color: $text;
+  border: 1px solid $text;
+  box-sizing: border-box;
+  text-decoration: none;
+}

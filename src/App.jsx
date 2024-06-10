@@ -6,7 +6,6 @@ import SignIn from "./routes/SignIn/SignIn";
 import User from "./routes/User/User";
 import Footer from "./components/common/Footer/Footer";
 import ProtectedRoutes from "./components/auth/ProtectedRoutes";
-import EditUser from "./routes/User/EditUser";
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route element={<ProtectedRoutes />}>
           <Route path="/user" element={<User />} />
-          <Route path="/user/edit" element={<EditUser />} />
         </Route>
       </Routes>
       <Footer />

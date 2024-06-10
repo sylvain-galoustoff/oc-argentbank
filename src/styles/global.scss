@@ -41,6 +41,12 @@ a {
 }
 
 /* FORMS */
+.inline-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .input-wrapper,
 .input-remember {
   margin-bottom: 20px;
