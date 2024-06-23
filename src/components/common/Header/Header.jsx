@@ -6,6 +6,7 @@ import logo from "../../../assets/argentBankLogo.png";
 import style from "./Header.module.scss";
 import Toast from "../Toast/Toast";
 import { updateToken } from "../../../store/userReducer";
+import { updateToast } from "../../../store/toastReducer";
 
 function Header() {
   const toast = useSelector((state) => state.toast);
@@ -15,6 +16,13 @@ function Header() {
   const logout = () => {
     localStorage.removeItem("token");
     dispatch(updateToken(null));
+    dispatch(
+      updateToast({
+        show: true,
+        type: "success",
+        message: "Successfuly logged out",
+      })
+    );
   };
 
   return (
