@@ -45,3 +45,20 @@
     text-decoration: underline;
   }
 }
+
+@media screen and (max-width: 410px) {
+  #logo {
+    width: 150px;
+  }
+
+  .userNav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .25rem;
+  }
+
+  #logOutButton {
+    white-space: nowrap;
+    padding: 0;
+  }
+}

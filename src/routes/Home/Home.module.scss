@@ -59,3 +59,25 @@
   font-weight: bold;
   margin: 2rem 0 0.5rem;
 }
+
+@media screen and (max-width: 750px) {
+  .features {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .heroContent {
+    position: relative;
+    width: auto;
+    margin: 0 16px;
+    top: 0;
+    left: 0;
+  }
+}
